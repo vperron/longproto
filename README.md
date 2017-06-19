@@ -41,8 +41,8 @@ We can drop the headers for more economy (Accept-Encoding, Host...)
 4608 bytes/hour if the handshakes count.
 2832 bytes/hour if they don't.
 
-66 bytes for the keepalives.
-15840 bytes per hour if the keepalives count.
+66 * 2 bytes for the keepalives.
+31680 bytes per hour if the keepalives count.
 0 bytes per hour if they don't.
 
 0 bytes for the connection drop after the timeout.
@@ -51,8 +51,8 @@ The command payloads are considered useful and uncompressible data.
 
 So that goes...
 
-WORST CASE: 14Mb / month.
-NO TCP HANDSHAKES: 12MB / month.
+WORST CASE: 26Mb / month.
+NO TCP HANDSHAKES: 24MB / month.
 TCP HANDSHAKES, NO KEEPALIVES: 3MB / month.
 ONLY HTTP HELLO: 1.9MB / month.
 
