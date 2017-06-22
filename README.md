@@ -31,10 +31,8 @@ This leads to:
    chance of not being counted as "data".
 5. After the first failed keepalive, we reconnect.
 
-Which leads us to:
+Which leads us to: 74+74+66+211+66 = 384 bytes
 
-74+74+66+211+66 = 384
----------------------
 425 bytes for the connection establishment, maybe not counted. X by hour without command.
 We can drop the headers for more economy (Accept-Encoding, Host...)
 
@@ -99,6 +97,12 @@ Ceci s'active assez facilement dans Nginx.
 http://nginx.org/en/docs/http/ngx_http_ssl_module.html#ssl_session_tickets
 
 Cela permet de n'effectuer qu'un seul échange de clés par heure, par exemple.
+
+Apparemment les Session Tickets sont déjà proposés et actifs côté serveur; mais nos clients
+ne les interprètent pas.
+
+La session de handshake TLS coute environ 1 seconde, 10 paquets émis par le serveur, pour
+un total de 5076 octets.
 
 
 ## Sigfox / LoRa
